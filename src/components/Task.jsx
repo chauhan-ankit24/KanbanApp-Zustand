@@ -13,8 +13,8 @@ export default function Task({ title }) {
 
     return (
         <div className="task" draggable onDragStart={() => { setDraggedTask(task.title) }} >
-            <div> {task.title}</div>
-            <div>
+            <div className='taskTitle'> {task.title}</div>
+            <div className='taskMain'>
                 <div className='bottomWrapper'>
                     <img src={deleteImage} onClick={() => deleteTask(task.title)} />
                 </div>

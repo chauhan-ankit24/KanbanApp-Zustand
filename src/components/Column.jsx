@@ -36,13 +36,16 @@ export default function Column({ state }) {
             }}
         >
             <div className='titleWrapper'>
-                <p>{state}</p>
-                <button onClick={() => {
-                    setOpen(true);
-                }} >
-                    <img src={addImage} />
-                    Add
-                </button>
+                <div>
+                    <p>{state}</p>
+                </div>
+                <div>
+                    <button onClick={() => {
+                        setOpen(true);
+                    }} >
+                        <img src={addImage} />
+                    </button>
+                </div>
             </div>
             {tasks.map((task) => (
                 <Task title={task.title} key={task.title} />
