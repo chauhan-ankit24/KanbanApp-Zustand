@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { useStore } from '../store'
 import './Task.css'
-import image from '../assets/react.svg'
+import deleteImage from '../assets/delete.svg'
 
 export default function Task({ title }) {
     const task = useStore((store) =>
@@ -9,13 +9,14 @@ export default function Task({ title }) {
     );
 
     const deleteTask = useStore((store) => store.deleteTask);
+    const setDraggedTask = useStore((store) => store.setDraggedTask);
 
     return (
-        <div className="task">
+        <div className="task" draggable onDragStart={() => { setDraggedTask(task.title) }} >
             <div> {task.title}</div>
             <div>
                 <div className='bottomWrapper'>
-                    <img src={image} onClick={() => deleteTask(task.title)} />
+                    <img src={deleteImage} onClick={() => deleteTask(task.title)} />
                 </div>
                 <div className={classNames('status', task.state)}>
                     {task.state}
