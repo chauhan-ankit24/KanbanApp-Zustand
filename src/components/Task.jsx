@@ -1,18 +1,21 @@
 import classNames from 'classnames'
 import { useStore } from '../store'
 import './Task.css'
-
+import image from '../assets/react.svg'
 
 export default function Task({ title }) {
     const task = useStore((store) =>
         store.tasks.find((task) => task.title === title)
     );
-    console.log(task)
+
+    const deleteTask = useStore((store) => store.deleteTask);
+
     return (
         <div className="task">
             <div> {task.title}</div>
             <div>
                 <div className='bottomWrapper'>
+                    <img src={image} onClick={() => deleteTask(task.title)} />
                 </div>
                 <div className={classNames('status', task.state)}>
                     {task.state}
